@@ -1,0 +1,63 @@
+✅ System Information to Display:
+🧠 CPU
+Current usage %
+
+Physical cores / Logical cores
+
+CPU frequency (MHz)
+
+CPU temperature (if available)
+
+💾 Memory (RAM)
+Total RAM
+
+Used RAM
+
+Free RAM
+
+Percentage used
+
+💽 Disk
+Total disk space
+
+Used disk space
+
+Free space
+
+Percentage used
+
+Mount point (e.g., /, /home)
+
+🔌 Battery
+Battery percent
+
+Plugged in or not
+
+Time left (if discharging)
+
+🌐 Network
+Hostname
+
+IP address
+
+MAC address
+
+Upload/download speed (optional)
+
+🖥️ System Info
+Username
+
+OS name and version
+
+Architecture (e.g., x86_64)
+
+Boot time
+
+Uptime
+
+🔧 Libraries You'll Use
+Task	Library
+CPU, RAM, Disk, Battery	psutil
+OS info, username	platform, os, getpass
+IP/hostname	socket
+Uptime	psutil.boot_time() + datetime
