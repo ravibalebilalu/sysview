@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QLabel,QWidget,QVBoxLayout,QListWidget
+from PySide6.QtWidgets import QLabel,QWidget,QVBoxLayout,QListWidget,QHBoxLayout
 import psutil
 
 from PySide6.QtCore import QTimer,Qt
@@ -7,23 +7,45 @@ class CPU(QWidget):
         super().__init__()
         #labels
         self.subheader = QLabel("CPU")
+        self.subheader.setStyleSheet("font-size:25px;font-weight:bold;")
         self.current_usage_label = QLabel()
         self.physical_cores_label = QLabel()
         self.logical_cores_label = QLabel()
         self.freq_label = QLabel("Frequency")
         self.cpu_frequency_list = QListWidget()
+         
         self.temp_label = QLabel("Temperature")
         self.cpu_temperature_list = QListWidget()
         #layout
         layout = QVBoxLayout()
-        layout.addWidget(self.subheader)
-        layout.addWidget(self.current_usage_label)
-        layout.addWidget(self. physical_cores_label)
-        layout.addWidget(self. logical_cores_label)
-        layout.addWidget(self.freq_label)
-        layout.addWidget(self.cpu_frequency_list)
-        layout.addWidget(self.temp_label)
-        layout.addWidget(self.cpu_temperature_list)
+        
+        cpu_layout = QHBoxLayout()
+        cpu_layout.addWidget(self.subheader)
+        cpu_layout.addWidget(self.current_usage_label)
+        cpu_layout.addWidget(self. physical_cores_label)
+        cpu_layout.addWidget(self. logical_cores_label)
+        
+        cpu_widget = QWidget()
+        cpu_widget.setStyleSheet("border:1px solid #555;")
+        cpu_widget.setLayout(cpu_layout)
+        layout.addWidget(cpu_widget)
+         
+        #frequency
+        frequency_layout = QHBoxLayout()
+        frequency_layout .addWidget(self.freq_label)
+        frequency_layout.addWidget(self.cpu_frequency_list)
+        frequency_widget = QWidget()
+        frequency_widget.setStyleSheet("border:1px solid #555;")
+        frequency_widget.setLayout(frequency_layout)
+        layout.addWidget(frequency_widget)
+
+        #temperature
+        temperature_layout = QHBoxLayout()
+        temperature_layout.addWidget(self.temp_label)
+        temperature_layout.addWidget(self.cpu_temperature_list)
+        temperature_widget = QWidget()
+        temperature_widget.setLayout(temperature_layout)
+        layout.addWidget(temperature_widget)
 
         self.setLayout(layout)
         #timer
@@ -37,7 +59,7 @@ class CPU(QWidget):
 
     def update_cpu_percent(self):
         cpu_usage = psutil.cpu_percent()
-        self.current_usage_label.setText(f"CPU usage : {cpu_usage}")
+        self.current_usage_label.setText(f"CPU usage : {cpu_usage}%")
 
     def update_cores(self):
         physical_cpu_cores = psutil.cpu_count(logical=False)

@@ -12,6 +12,7 @@ class SystemInfo(QWidget):
         super().__init__()
 
         self.sys_label = QLabel("System Information")
+        self.sys_label.setStyleSheet("font-size:25px;font-weight:bold;")
          
         self.user_name_label = QLabel(f"User : {getpass.getuser()}")
 

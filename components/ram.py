@@ -7,6 +7,7 @@ class Ram(QWidget):
     def __init__(self):
         super().__init__()
         self.ram_label = QLabel("Memory")
+        self.ram_label.setStyleSheet("font-size:25px;font-weight:bold;")
         self.ram_list = QListWidget()
         layout = QVBoxLayout()
         layout.addWidget(self.ram_label)

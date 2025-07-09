@@ -9,6 +9,7 @@ class Disk(QWidget):
 
         self.disk_info_list = QListWidget()
         self.disk_label = QLabel("Disk")
+        self.disk_label.setStyleSheet("font-size:25px;font-weight:bold;")
         layout = QVBoxLayout()
         layout.addWidget(self.disk_label)
         layout.addWidget(self.disk_info_list)
