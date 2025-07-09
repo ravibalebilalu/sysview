@@ -44,6 +44,7 @@ class CPU(QWidget):
         temperature_layout.addWidget(self.temp_label)
         temperature_layout.addWidget(self.cpu_temperature_list)
         temperature_widget = QWidget()
+        temperature_widget.setStyleSheet("border:1px solid #555;")
         temperature_widget.setLayout(temperature_layout)
         layout.addWidget(temperature_widget)
 
