@@ -5,6 +5,8 @@ from PySide6.QtCore import Qt
 from components.time_date import DateTime
 from components.cpu import CPU
 from components.ram import Ram
+from components.disk import Disk
+from components.system_info import SystemInfo
 
 class MainLayout(QWidget):
     def __init__(self):
@@ -15,9 +17,11 @@ class MainLayout(QWidget):
         self.setGeometry(300,0,1000,600)
 
         mainbox = QVBoxLayout()
+        mainbox.addWidget(SystemInfo())
         mainbox.addWidget(Ram())
         mainbox.addWidget(DateTime(),alignment=Qt.AlignmentFlag.AlignTop)
         mainbox.addWidget(CPU())
+        mainbox.addWidget(Disk())
 
         self.setLayout(mainbox)
 
